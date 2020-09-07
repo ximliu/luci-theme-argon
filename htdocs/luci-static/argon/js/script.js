@@ -1,26 +1,28 @@
 /**
- *	Material is a clean HTML5 theme for LuCI. It is based on luci-theme-bootstrap and MUI
+ *  Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Argon Template
  *
- *	luci-theme-material
- *		Copyright 2015 Lutty Yang <lutty@wcan.in>
+ *  luci-theme-argon
+ *      Copyright 2019 Jerrykuku <jerrykuku@qq.com>
  *
- *	Have a bug? Please create an issue here on GitHub!
- *		https://github.com/LuttyYang/luci-theme-material/issues
+ *  Have a bug? Please create an issue here on GitHub!
+ *      https://github.com/jerrykuku/luci-theme-argon/issues
  *
- *	luci-theme-bootstrap:
- *		Copyright 2008 Steven Barth <steven@midlink.org>
- *		Copyright 2008 Jo-Philipp Wich <jow@openwrt.org>
- *		Copyright 2012 David Menting <david@nut-bolt.nl>
+ *  luci-theme-material: 
+ *      Copyright 2015 Lutty Yang <lutty@wcan.in>
+ *		https://github.com/LuttyYang/luci-theme-material/
  *
- *	MUI:
- *		https://github.com/muicss/mui
+ *  Agron Theme
+ *	    https://demos.creative-tim.com/argon-dashboard/index.html
  *
- *	Licensed to the public under the Apache License 2.0
+ *  Login background
+ *      https://unsplash.com/
+ *  Font generate by Icomoon<icomoon.io>
+ *
+ *  Licensed to the public under the Apache License 2.0
  */
 
 document.addEventListener('luci-loaded', function(ev) {
 (function ($) {
-	$(".main > .loading").fadeOut();
 
 	/**
 	 * trim text, Remove spaces, wrap
@@ -106,7 +108,6 @@ document.addEventListener('luci-loaded', function(ev) {
 	$(".main > .main-left > .nav > .slide > .slide-menu > li > a").click(function () {
 		if (lastNode != undefined) lastNode.removeClass("active");
 		$(this).parent().addClass("active");
-		$(".main > .loading").fadeIn("fast");
 		return true;
 	});
 
@@ -116,7 +117,6 @@ document.addEventListener('luci-loaded', function(ev) {
 	$(".main > .main-left > .nav > .slide > .slide-menu > li").click(function () {
 		if (lastNode != undefined) lastNode.removeClass("active");
 		$(this).addClass("active");
-		$(".main > .loading").fadeIn("fast");
 		window.location = $($(this).find("a")[0]).attr("href");
 		return false;
 	});
@@ -137,16 +137,12 @@ document.addEventListener('luci-loaded', function(ev) {
 	$(".showSide").click(function () {
 		if (showSide) {
 			$(".darkMask").stop(true).fadeOut("fast");
-			$(".main-left").stop(true).animate({
-				width: "0"
-			}, "200");
+			$(".main-left").width(0);
 			$(".main-right").css("overflow-y", "visible");
 			showSide = false;
 		} else {
 			$(".darkMask").stop(true).fadeIn("fast");
-			$(".main-left").stop(true).animate({
-				width: "13rem"
-			}, "200");
+			$(".main-left").width("13rem")
 			$(".main-right").css("overflow-y", "hidden");
 			showSide = true;
 		}
@@ -156,9 +152,7 @@ document.addEventListener('luci-loaded', function(ev) {
 		if (showSide) {
 			showSide = false;
 			$(".darkMask").stop(true).fadeOut("fast");
-			$(".main-left").stop(true).animate({
-				width: "0"
-			}, "fast");
+			$(".main-left").width(0);
 			$(".main-right").css("overflow-y", "visible");
 		}
 	});
